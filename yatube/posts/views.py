@@ -56,7 +56,7 @@ def post_create(request):
         if form.is_valid():
             form.instance.author = request.user
             form.save()
-            return redirect(reverse('posts:index'))
+            return redirect(reverse('posts:profile'))
     form = PostForm()
     context = {'form': form}
     return render(request, 'posts/create_post.html', context)
