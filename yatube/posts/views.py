@@ -1,7 +1,6 @@
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import get_user_model
-from django.urls import reverse
 from .forms import PostForm
 from .models import Post, Group
 
@@ -56,17 +55,18 @@ def post_detail(request, post_id):
 
 
 def post_create(request):
-    if request.method == 'POST':
-        form = PostForm(request.POST)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.author_id = request.user.id
-            instance.save()
-            return redirect(reverse('posts:post_detail',
-                                    request.user.username))
-    form = PostForm()
-    context = {'form': form}
-    return render(request, 'posts/create_post.html', context)
+    """Добавления поста."""
+
+    template = "posts/create_post.html"
+
+    form = PostForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.author_id = request.user.id
+        instance.save()
+        return redirect("posts:profile", request.user)
+
+    return render(request, template, {"form": form})
 
 
 def post_edit(request, post_id):
