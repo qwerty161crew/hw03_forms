@@ -5,5 +5,5 @@ class Author(TemplateView):
     template_name = 'posts/author.html'
 
 
-class Stack(TemplateView):
+class Tech(TemplateView):
     template_name = 'posts/tech.html'
