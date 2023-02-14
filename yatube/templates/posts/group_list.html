@@ -3,7 +3,8 @@
   {{ group.title }}
   {% endblock title %}
   
-  {% block content %}    
+  {% block content %}
+  {% block header %}{{ group.name }}{% endblock %}    
   <main>
       <div class="container">
         <h1>Записи сообщества {{ group.title }}</h1>

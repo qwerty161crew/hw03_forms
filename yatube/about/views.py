@@ -6,4 +6,4 @@ class Author(TemplateView):
 
 
 class Stack(TemplateView):
-    template_name = 'posts/stack.html'
+    template_name = 'posts/tech.html'
