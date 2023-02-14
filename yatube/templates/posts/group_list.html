@@ -5,10 +5,9 @@
   <main>
     {% block header %}{{ group.name }}{% endblock %}
       <div class="container">
-        <p>Записи сообщества {{ group.title }}.</p>
+        <h1>Записи сообщества {{ group.name }}</h1>
         <p>
           {{ group.description }}
-          <h1>{% block header %}{{ group.name }}{% endblock %}</h1>
         </p>
         {% for post in page_obj  %}
         <article>
