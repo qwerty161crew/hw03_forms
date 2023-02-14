@@ -55,13 +55,14 @@ def post_detail(request, post_id):
     return render(request, 'posts/post_detail.html', context)
 
 
-def post_create(request):
+def post_create(request, post_id):
     if request.method == 'POST':
         form = PostForm(request.POST)
+        post_id = get_object_or_404(Post, id=post_id)
         if form.is_valid():
             form.instance.author = request.user
             form.save()
-            return redirect(reverse('posts:post_detail'))
+            return redirect(reverse('posts:post_detail', args=post_id))
     form = PostForm()
     context = {'form': form}
     return render(request, 'posts/create_post.html', context)
