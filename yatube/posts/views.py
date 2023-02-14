@@ -55,7 +55,7 @@ def post_detail(request, post_id):
     return render(request, 'posts/post_detail.html', context)
 
 
-def post_create(request):
+def post_create(request, username):
     username = get_object_or_404(User, username=username)
     if request.method == 'POST':
         form = PostForm(request.POST)
