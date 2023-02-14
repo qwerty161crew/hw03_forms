@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'about.apps.AboutConfig',
     'users.apps.UsersConfig',
     'core.apps.CoreConfig',
+    'core.context_processors.year',
+    'core.templatetags.user_filters'
 ]
 
 MIDDLEWARE = [
