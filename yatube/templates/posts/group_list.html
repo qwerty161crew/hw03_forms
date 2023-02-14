@@ -3,9 +3,9 @@
 {% endblock %}
   {% block content %}   
   <main>
+    {% block header %}{{ group.name }}{% endblock %}
       <div class="container">
         <h1>Записи сообщества {{ group.title }}</h1>
-        {% block header %}{{ group.name }}{% endblock %}
         <p>
           {{ group.description }}
         </p>
