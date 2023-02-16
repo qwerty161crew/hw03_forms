@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}{{ group.title }}.{% endblock %}
+{% block title %}{{ group.title }}{% endblock %}
 {% block content %}
+    <h1>{% block header %}{{ group.title }}{% endblock header %}</h1>
     <div class="container">
         <p>Записи сообщества {{ group.title }}.</p>
-        <p>{{ group.description | linebreaksb }}</p>
-            {% block header %}{{ group.title }}{% endblock header %}
+        <p>{{ group.description }}</p>
     {% for post in page_obj %}
         <article>
             <ul>
