@@ -1,8 +1,6 @@
 from django.contrib.auth import get_user_model
-
 from django.db import models
 
-from .validators import validate_not_empty
 User = get_user_model()
 
 
@@ -16,7 +14,7 @@ class Group(models.Model):
 
 
 class Post(models.Model):
-    text = models.TextField(validators=[validate_not_empty])
+    text = models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(
         User,
@@ -24,7 +22,7 @@ class Post(models.Model):
         related_name='posts'
     )
     group = models.ForeignKey(
-        Group, on_delete=models.CASCADE, blank=True, null=True)
+        Group, on_delete=models.SET_NULL,related_name='posts', blank=True, null=True)
 
     class Meta:
         ordering = ('-pub_date',)
