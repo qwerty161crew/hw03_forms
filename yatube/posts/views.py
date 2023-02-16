@@ -52,6 +52,7 @@ def post_detail(request, post_id):
     }
     return render(request, 'posts/post_detail.html', context)
 
+
 @login_required
 def post_create(request):
     """Добавления поста."""
@@ -61,19 +62,23 @@ def post_create(request):
         instance = form.save(commit=False)
         instance.author_id = request.user.id
         instance.save()
-        return redirect(reverse("posts:profile", kwargs={'username': request.user}))
+        return redirect(reverse("posts:profile",
+                                kwargs={'username': request.user}))
 
     return render(request, template, {"form": form})
+
 
 @login_required
 def post_edit(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     if request.user.id != post.author.id:
-        return redirect(reverse("posts:post_detail", kwargs={'post_id': post_id}))
+        return redirect(reverse("posts:post_detail",
+                                kwargs={'post_id': post_id}))
     form = PostForm(request.POST or None, instance=post)
     if form.is_valid():
         form.save()
-        return redirect(reverse("posts:post_detail", kwargs={'post_id': post_id}))
+        return redirect(reverse("posts:post_detail",
+                                kwargs={'post_id': post_id}))
     context = {
         "form": form,
         "is_edit": True,
