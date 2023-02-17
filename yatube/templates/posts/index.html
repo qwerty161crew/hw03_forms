@@ -20,9 +20,9 @@
             <p>
               {{ post.text | linebreaksbr }}
             </p>
-              {% if post.group  %}
-                <a href="{% url 'posts:group_posts' post.group.slug  %}">все записи группы</a>
-              {% endif %}
+            {% if post.group  %}
+              <a href="{% url 'posts:group_posts' post.group.slug  %}">все записи группы: {{ group.name }}</a>
+            {% endif %}
           </article>
           {% if not forloop.last %}
             <hr>

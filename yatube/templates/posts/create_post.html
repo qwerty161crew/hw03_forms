@@ -7,7 +7,7 @@
     Редактировать пост
   {% endif %}
 {% endblock %}
-  {% block content %}	   
+{% block content %}	   
     <main>
       <div class="container py-5">
         <div class="row justify-content-center">
@@ -16,16 +16,13 @@
               <div class="card-header">       
                 {% if is_edit  %}
                   Редактировать пост
+                  <form method="POST" action="{% url 'posts:post_edit' form.instance.id %}"></form>
                 {% else %}
                   Создать новый пост
+                  <form method="POST" action="{% url 'posts:post_create' %}"></form>
                 {% endif %}           
               </div>
               <div class="card-body">        
-                {% if is_edit %}
-                  <form method="POST" action="{% url 'posts:post_edit' form.instance.id %}">
-                {% else %}
-                  <form method="POST" action="{% url 'posts:post_create' %}">
-                {% endif %}
                   {% csrf_token %}
                   {% for field in form %}
                     <div class="form-group row my-3 p-3">
@@ -45,11 +42,11 @@
                   {% endfor %}  
                   <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">
-                    {% if is_edit %}
-                      Сохранить
-                    {% else %}
-                      Добавить
-                    {% endif %}
+                      {% if is_edit %}
+                        Сохранить
+                      {% else %}
+                        Добавить
+                      {% endif %}
                     </button>
                   </div>
                 </form>
@@ -59,4 +56,4 @@
         </div>
       </div>
     </main>
-  {% endblock %}
+{% endblock %}
