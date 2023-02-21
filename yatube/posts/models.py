@@ -22,13 +22,11 @@ class Post(models.Model):
     text = models.TextField(_('text'))
     pub_date = models.DateTimeField(_('pub_date'), auto_now_add=True)
     author = models.ForeignKey(
-        _('author'),
         User,
         on_delete=models.CASCADE,
         related_name='posts'
     )
     group = models.ForeignKey(
-        _('group'),
         Group, on_delete=models.SET_NULL,
         related_name='posts', blank=True, null=True)
 
