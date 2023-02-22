@@ -4,18 +4,18 @@
     <h1>{{ group.title }}</h1>
     <div class="container">
         <p>{{ group.description | linebreaksbr }}</p>
-    {% for post in page_obj %}
-        <article>
-            <ul>
-                <li>Автор: {{ post.author.get_full_name }}</li>
-                <li>Дата публикации: {{ post.pub_date|date:"d E Y" }}</li>
-            </ul>
-            <p>{{ post.text | linebreaksbr }}</p>
-        </article>
-        {% if not forloop.last %}
-            <hr>
-        {% endif %}
-    {% endfor %}
+        {% for post in page_obj %}
+            <article>
+                <ul>
+                    <a href="{%  url 'posts:profile' post.author.username %}">Автор: {{ post.author.get_full_name }}</a>
+                    <li>Дата публикации: {{ post.pub_date|date:"d E Y" }}</li>
+                </ul>
+                <p>{{ post.text | linebreaksbr }}</p>
+            </article>
+                {% if not forloop.last %}
+                    <hr>
+                {% endif %}
+        {% endfor %}
     {% include 'includes/paginator.html' %}
         </div>
 {% endblock %}

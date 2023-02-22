@@ -17,16 +17,14 @@
             {% if is_edit %}
               Редактировать запись
             {% else %}
-              Новый пост
+              Новая запись
             {% endif %}
           </div>
-          <h2>
             {% if is_edit %}
               Редактировать запись
             {% else %}
               Добавить запись
             {% endif %}
-          </h2>
           <div class="card-body">
             {% if form.errors %}
               <div class="alert alert-danger">
@@ -41,7 +39,7 @@
               {% csrf_token %}
               {% for field in form %}
                 <div class="form-group">
-                  {{ field.labels }}
+                  {{ field.labels* }}
                   {% if field.help_text %}
                     <small class="form-text text-muted">{{ field.help_text }}</small>
                   {% endif %}
