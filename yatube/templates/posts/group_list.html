@@ -3,8 +3,7 @@
 {% block content %}
     <h1>{{ group.title }}</h1>
     <div class="container">
-        <p>Записи сообщества {{ group.title }}.</p>
-        <p>{{ group.description }}</p>
+        <p>{{ group.description | linebreaksbr }}</p>
     {% for post in page_obj %}
         <article>
             <ul>

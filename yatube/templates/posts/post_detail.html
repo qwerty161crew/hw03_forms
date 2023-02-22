@@ -22,7 +22,7 @@
               Автор: {{post.author.get_full_name}}
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              Всего постов автора:  <span >{{ post.count }}</span>
+              Всего постов автора:  <span >{{ post.author.posts.count }}</span>
             </li>
             <li class="list-group-item">
               <a href="{%  url 'posts:profile' post.author.username %}">
@@ -36,7 +36,7 @@
             {{post.text|linebreaksbr}}
             {% if user.id ==  post.author.id %}
               <a class="btn btn-primary" href="{% url 'posts:post_edit' post.id %}">
-            редактировать запись
+                редактировать запись
               </a>
             {% endif %}
           </p>
