@@ -19,7 +19,7 @@
         </li>
         {% if user.is_authenticated %}
           <li class="nav-item"> 
-            <a class="nav-link" href="{% url 'posts:post_create' %}">Новая запись</a>
+            <a class="nav-link" href="{% url 'posts:post_create' %}">Новый пост</a>
           </li>
           <li class="nav-item"> 
             <a class="nav-link link-light" href="{% url 'auth:password_change' %}">Изменить пароль</a>
@@ -28,7 +28,7 @@
             <a class="nav-link link-light" href="{% url 'auth:logged_out' %}">Выйти</a>
           </li>
           <li>
-            Пользователь: {{ user.username }}</a>
+            <a>Пользователь: {{ user.username }}</a>
           </li>
         {% else %}
           <li class="nav-item"> 

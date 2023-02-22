@@ -12,11 +12,11 @@
                 </ul>
                 <p>{{ post.text | linebreaksbr }}</p>
             </article>
-                {% if not forloop.last %}
+        {% if not forloop.last %}
             <hr>
         {% endif %}
         {% endfor %}
     {% include 'includes/paginator.html' %}
-        </div>
+    </div>
 {% endblock %}
   
